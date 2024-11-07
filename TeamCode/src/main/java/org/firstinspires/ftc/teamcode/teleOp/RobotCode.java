@@ -21,12 +21,18 @@ public class RobotCode extends OpMode {
     public static final double SLOW_MODE = .45;
     double currentMode;
     ElapsedTime buttonTime = null;
+    ElapsedTime elapsedTime;
+
+    {
+        elapsedTime = null;
+    }
 
     public void init(){
         hardware = new RobotHardware();
         hardware.init(hardwareMap);
         currentMode = FAST_MODE;
         buttonTime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
+        elapsedTime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
         telemetry.addData("Status: ", "Initialized");
         telemetry.update();
@@ -118,14 +124,51 @@ public class RobotCode extends OpMode {
 
     public void intake(){
         //intake will go here
+        if(gamepad2.left_trigger > 0) {
+            hardware.intakeMotor.setPower(-1.0);
+            telemetry.addData("Intake Wheels: ", "Spinning");
+        }
+        else {
+            hardware.intakeMotor.setPower(0.0);
+        }
     }
 
     public void launch(){
         //the things you need to do for launch will go here
+        if(gamepad1.right_trigger > 0){
+            hardware.rightServo.setPosition(1.0);
+            hardware.leftServo.setPosition(1.0);
+            telemetry.addData("Flaps: ", "Open");
+            elapsedTime.reset();
+            if(elapsedTime.time() > 1000){
+                hardware.launcherMotor.setPower(-1.0);
+            }
+            else{
+                hardware.launcherMotor.setPower(0.0);
+            }
+        }
+        else{
+            hardware.rightServo.setPosition(0.0);
+            hardware.leftServo.setPosition(0.0);
+        }
 
     }
 
     public void lift(){
        //climber code will go here
+        if(gamepad2.circle){
+            hardware.rightClimber.setPower(-1.0);
+            hardware.leftClimber.setPower(1.0);
+            elapsedTime.reset();
+            if(elapsedTime.time() > 6000){
+                hardware.rightClimber.setPower(0.0);
+                hardware.leftClimber.setPower(0.0);
+            }
+        }
+
+        else{
+            hardware.leftClimber.setPower(0.0);
+            hardware.rightClimber.setPower(0.0);
+        }
     }
 }
