@@ -135,7 +135,7 @@ public class RobotCode extends OpMode {
 
     public void launch(){
         //the things you need to do for launch will go here
-        if(gamepad1.right_trigger > 0){
+        if(gamepad2.right_trigger > 0){
             hardware.rightServo.setPosition(1.0);
             hardware.leftServo.setPosition(1.0);
             telemetry.addData("Flaps: ", "Open");
@@ -151,8 +151,18 @@ public class RobotCode extends OpMode {
 
     public void lift(){
        //climber code will go here
-        if(gamepad2.circle){
+        if(gamepad2.left_bumper){
             hardware.rightClimber.setPower(-1.0);
+            hardware.leftClimber.setPower(1.0);
+        }
+
+        else{
+            hardware.leftClimber.setPower(0.0);
+            hardware.rightClimber.setPower(0.0);
+        }
+
+        if(gamepad2.right_bumper){
+            hardware.rightClimber.setPower(1.0);
             hardware.leftClimber.setPower(-1.0);
         }
 
