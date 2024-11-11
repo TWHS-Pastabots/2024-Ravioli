@@ -139,18 +139,13 @@ public class RobotCode extends OpMode {
             hardware.rightServo.setPosition(1.0);
             hardware.leftServo.setPosition(1.0);
             telemetry.addData("Flaps: ", "Open");
-            elapsedTime.reset();
-            if(elapsedTime.time() > 1000){
-                hardware.launcherMotor.setPower(-1.0);
+            hardware.launcherMotor.setPower(-1.0);
             }
             else{
                 hardware.launcherMotor.setPower(0.0);
+                hardware.rightServo.setPosition(0.0);
+                hardware.leftServo.setPosition(0.0);
             }
-        }
-        else{
-            hardware.rightServo.setPosition(0.0);
-            hardware.leftServo.setPosition(0.0);
-        }
 
     }
 
@@ -158,12 +153,7 @@ public class RobotCode extends OpMode {
        //climber code will go here
         if(gamepad2.circle){
             hardware.rightClimber.setPower(-1.0);
-            hardware.leftClimber.setPower(1.0);
-            elapsedTime.reset();
-            if(elapsedTime.time() > 6000){
-                hardware.rightClimber.setPower(0.0);
-                hardware.leftClimber.setPower(0.0);
-            }
+            hardware.leftClimber.setPower(-1.0);
         }
 
         else{
