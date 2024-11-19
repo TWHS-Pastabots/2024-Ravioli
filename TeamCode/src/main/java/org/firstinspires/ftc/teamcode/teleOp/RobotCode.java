@@ -137,7 +137,7 @@ public class RobotCode extends OpMode {
         //the things you need to do for launch will go here
         if(gamepad2.right_trigger > 0){
             hardware.rightServo.setPosition(1.0);
-            hardware.leftServo.setPosition(1.0);
+            hardware.leftServo.setPosition(.5);
             telemetry.addData("Flaps: ", "Open");
             hardware.launcherMotor.setPower(-1.0);
             telemetry.addData("Flywheel: ", "Spinning");
