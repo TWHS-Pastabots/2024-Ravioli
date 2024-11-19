@@ -93,6 +93,5 @@ public void initializeServos(HardwareMap hardwareMap){
     //this is where all of your servos will go eventually
     leftServo.setPosition(0.0);
     rightServo.setPosition(0.0);
-    rightServo.setDirection(Servo.Direction.REVERSE);
 }
 }
