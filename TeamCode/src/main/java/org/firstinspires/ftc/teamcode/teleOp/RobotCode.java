@@ -21,18 +21,12 @@ public class RobotCode extends OpMode {
     public static final double SLOW_MODE = .45;
     double currentMode;
     ElapsedTime buttonTime = null;
-    ElapsedTime elapsedTime;
-
-    {
-        elapsedTime = null;
-    }
 
     public void init(){
         hardware = new RobotHardware();
         hardware.init(hardwareMap);
         currentMode = FAST_MODE;
         buttonTime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
-        elapsedTime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
         telemetry.addData("Status: ", "Initialized");
         telemetry.update();
