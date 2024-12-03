@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.autonomous;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 
+import org.firstinspires.ftc.teamcode.Hardware.RobotHardware;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.hardware.RavioliHardware;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -38,7 +39,7 @@ public class BlueSequences {
     Vector2d parking3 = new Vector2d(16,-16);*/
 
 
-    public BlueSequences(RavioliHardware hardware, SampleMecanumDrive drive) {
+    public BlueSequences(RobotHardware hardware, SampleMecanumDrive drive) {
         this.hardware = hardware;
         intake = new Intake(hardware);
         launcher = new Launcher(hardware);
