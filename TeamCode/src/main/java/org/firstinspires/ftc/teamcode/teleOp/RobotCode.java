@@ -130,21 +130,29 @@ public class RobotCode extends OpMode {
         }
         else {
             hardware.intakeMotor.setPower(0.0);
+            telemetry.addData("Intake Wheels: ", "Stopped");
         }
     }
 
     public void launch(){
         //the things you need to do for launch will go here
         if(gamepad2.right_trigger > 0){
-            hardware.rightServo.setPosition(1.0);
-            hardware.leftServo.setPosition(1.0);
-            telemetry.addData("Flaps: ", "Open");
             hardware.launcherMotor.setPower(-1.0);
+            telemetry.addData("Flywheel: ", "Spinning");
             }
             else{
                 hardware.launcherMotor.setPower(0.0);
+                telemetry.addData("Flywheel: ", "Stopped");
+            }
+            if(gamepad2.square){
+                hardware.rightServo.setPosition(0.33);
+                hardware.leftServo.setPosition(0);
+                telemetry.addData("Flaps: ", "Open");
+            }
+            else{
                 hardware.rightServo.setPosition(0.0);
-                hardware.leftServo.setPosition(0.0);
+                hardware.leftServo.setPosition(0.5);
+                telemetry.addData("Flaps: ", "Closed");
             }
 
     }
@@ -153,7 +161,8 @@ public class RobotCode extends OpMode {
        //climber code will go here
         if(gamepad2.left_bumper){
             hardware.rightClimber.setPower(-1.0);
-            hardware.leftClimber.setPower(1.0);
+            hardware.leftClimber.setPower(-1.0);
+            telemetry.addData("Climber: ", "Going Up");
         }
 
         else{
@@ -163,7 +172,8 @@ public class RobotCode extends OpMode {
 
         if(gamepad2.right_bumper){
             hardware.rightClimber.setPower(1.0);
-            hardware.leftClimber.setPower(-1.0);
+            hardware.leftClimber.setPower(1.0);
+            telemetry.addData("Climber: ", "Going Down");
         }
 
         else{
