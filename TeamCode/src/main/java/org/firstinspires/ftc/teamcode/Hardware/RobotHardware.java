@@ -94,4 +94,12 @@ public void initializeServos(HardwareMap hardwareMap){
     leftServo.setPosition(0.0);
     rightServo.setPosition(0.0);
 }
+public void initializeClimber(HardwareMap hardwareMap){
+     leftClimber.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+     leftClimber.setZeroPowerBehavior((DcMotor.ZeroPowerBehavior.BRAKE));
+     rightClimber.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+     rightClimber.setZeroPowerBehavior((DcMotor.ZeroPowerBehavior.BRAKE));
+     leftClimber.setPower(0.0);
+     rightClimber.setPower(0.0);
+}
 }
