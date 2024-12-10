@@ -130,32 +130,40 @@ public class RobotCode extends OpMode {
 
     public void launch(){
         //the things you need to do for launch will go here
-        if(gamepad2.right_trigger > 0){
+        if(gamepad2.right_trigger > 0) {
             hardware.launcherMotor.setPower(-1.0);
-            telemetry.addData("Flywheel: ", "Spinning");
+            telemetry.addData("Flywheel: ", "Spinning Full Speed");
+            if (gamepad2.triangle) {
+                hardware.launcherMotor.setPower(.75);
+                telemetry.addData("Flywheel: ", "Spinning 75% Speed");
             }
-            else{
-                hardware.launcherMotor.setPower(0.0);
-                telemetry.addData("Flywheel: ", "Stopped");
+            if (gamepad2.cross) {
+                hardware.launcherMotor.setPower(.5);
+                telemetry.addData("Flywheel: ", "Spinning Half Speed");
             }
-            if(gamepad2.square){
-                hardware.rightServo.setPosition(0.33);
-                hardware.leftServo.setPosition(0);
-                telemetry.addData("Flaps: ", "Open");
-            }
-            else{
-                hardware.rightServo.setPosition(0.0);
-                hardware.leftServo.setPosition(0.5);
-                telemetry.addData("Flaps: ", "Closed");
-            }
+        }
+        else{
+            hardware.launcherMotor.setPower(0.0);
+            telemetry.addData("Flywheel: ", "Stopped");
+        }
 
+        if(gamepad2.square){
+            hardware.rightServo.setPosition(0.33);
+            hardware.leftServo.setPosition(0);
+            telemetry.addData("Flaps: ", "Open");
+        }
+        else{
+            hardware.rightServo.setPosition(0.0);
+            hardware.leftServo.setPosition(0.5);
+            telemetry.addData("Flaps: ", "Closed");
+        }
     }
 
     public void lift(){
        //climber code will go here
         if(gamepad2.left_bumper){
-            hardware.rightClimber.setPower(-1.0);
-            hardware.leftClimber.setPower(-1.0);
+            hardware.rightClimber.setPower(-0.6);
+            hardware.leftClimber.setPower(1.0);
             telemetry.addData("Climber: ", "Going Up");
         }
 
@@ -166,7 +174,7 @@ public class RobotCode extends OpMode {
 
         if(gamepad2.right_bumper){
             hardware.rightClimber.setPower(1.0);
-            hardware.leftClimber.setPower(1.0);
+            hardware.leftClimber.setPower(-1.0);
             telemetry.addData("Climber: ", "Going Down");
         }
 
