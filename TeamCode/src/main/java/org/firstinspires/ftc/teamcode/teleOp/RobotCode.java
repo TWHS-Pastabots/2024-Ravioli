@@ -119,16 +119,16 @@ public class RobotCode extends OpMode {
             telemetry.addData("Intake Wheels: ", "Spinning");
         } else {
             hardware.intakeMotor.setPower(0.0);
-            telemetry.addData("Intake Wheels: ", "Stopped");
-            if (gamepad2.dpad_down) {
+            telemetry.addData("Intake Wheels: ", "Stopped");}
+        if (gamepad2.dpad_down) {
                 hardware.intakeMotor.setPower(1.0);
                 telemetry.addData("intake Wheels: ", "Reversing");
-            } else {
+        } else {
                 hardware.intakeMotor.setPower(0.0);
                 telemetry.addData("Intake Wheels: ", "Stopped");
-            }
         }
     }
+
         public void launch() {
             //the things you need to do for launch will go here
             if (gamepad2.right_trigger > 0) {
