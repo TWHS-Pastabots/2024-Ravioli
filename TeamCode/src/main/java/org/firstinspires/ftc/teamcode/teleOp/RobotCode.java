@@ -120,13 +120,13 @@ public class RobotCode extends OpMode {
         } else {
             hardware.intakeMotor.setPower(0.0);
             telemetry.addData("Intake Wheels: ", "Stopped");}
-        if (gamepad2.dpad_down) {
+        /*if (gamepad2.dpad_down) {
                 hardware.intakeMotor.setPower(1.0);
-                telemetry.addData("intake Wheels: ", "Reversing");
+                telemetry.addData("Intake Wheels: ", "Reversing");
         } else {
                 hardware.intakeMotor.setPower(0.0);
                 telemetry.addData("Intake Wheels: ", "Stopped");
-        }
+        } */
     }
 
         public void launch() {
