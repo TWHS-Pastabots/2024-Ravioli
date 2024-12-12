@@ -114,19 +114,18 @@ public class RobotCode extends OpMode {
 
     public void intake() {
         //intake will go here
-        if (gamepad2.left_trigger > 0) {
-            hardware.intakeMotor.setPower(-1.0);
+        if (gamepad2.dpad_down) {
+            hardware.intakeMotor.setPower(1.0);
             telemetry.addData("Intake Wheels: ", "Spinning");
         } else {
             hardware.intakeMotor.setPower(0.0);
             telemetry.addData("Intake Wheels: ", "Stopped");}
-        /*if (gamepad2.dpad_down) {
-                hardware.intakeMotor.setPower(1.0);
+        if (gamepad2.dpad_up) {
+                hardware.intakeMotor.setPower(-1.0);
                 telemetry.addData("Intake Wheels: ", "Reversing");
         } else {
                 hardware.intakeMotor.setPower(0.0);
-                telemetry.addData("Intake Wheels: ", "Stopped");
-        } */
+                telemetry.addData("Intake Wheels: ", "Stopped");}
     }
 
         public void launch() {
@@ -135,11 +134,11 @@ public class RobotCode extends OpMode {
                 hardware.launcherMotor.setPower(-1.0);
                 telemetry.addData("Flywheel: ", "Spinning Full Speed");
                 if (gamepad2.triangle) {
-                    hardware.launcherMotor.setPower(.75);
+                    hardware.launcherMotor.setPower(-.75);
                     telemetry.addData("Flywheel: ", "Spinning 75% Speed");
                 }
                 if (gamepad2.cross) {
-                    hardware.launcherMotor.setPower(.5);
+                    hardware.launcherMotor.setPower(-.5);
                     telemetry.addData("Flywheel: ", "Spinning Half Speed");
                 }
             } else {
@@ -152,7 +151,7 @@ public class RobotCode extends OpMode {
                 hardware.leftServo.setPosition(0);
                 telemetry.addData("Flaps: ", "Open");
             } else {
-                hardware.rightServo.setPosition(0.0);
+                hardware.rightServo.setPosition(0.1);
                 hardware.leftServo.setPosition(0.5);
                 telemetry.addData("Flaps: ", "Closed");
             }
