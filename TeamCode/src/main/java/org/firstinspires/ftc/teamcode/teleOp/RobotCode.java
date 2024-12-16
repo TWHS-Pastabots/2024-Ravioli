@@ -160,8 +160,7 @@ public class RobotCode extends OpMode {
         public void lift() {
             //climber code will go here
             if (gamepad2.left_bumper) {
-                hardware.rightClimber.setPower(-0.6);
-                hardware.rightClimber.setPower(-1.0);
+                hardware.rightClimber.setPower(-0.5);
                 hardware.leftClimber.setPower(1.0);
                 telemetry.addData("Climber: ", "Going Up");
             } else {
