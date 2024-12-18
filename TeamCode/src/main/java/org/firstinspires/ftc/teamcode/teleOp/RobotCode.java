@@ -151,8 +151,8 @@ public class RobotCode extends OpMode {
                 hardware.leftServo.setPosition(0);
                 telemetry.addData("Flaps: ", "Open");
             } else {
-                hardware.rightServo.setPosition(0);
-                hardware.leftServo.setPosition(0.5);
+                hardware.rightServo.setPosition(0.05);
+                hardware.leftServo.setPosition(0.45);
                 telemetry.addData("Flaps: ", "Closed");
             }
         }
